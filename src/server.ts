@@ -5,12 +5,15 @@ import express, {
 } from "express";
 import "dotenv/config";
 import { Pool } from "pg";
+import config from "./config";
+
+
 
 const app: Application = express();
-const port = process.env.PORT;
+const port = config.port;
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: config.connection_string
 });
 // console.log(pool)
 
