@@ -6,6 +6,7 @@ import express, {
 import "dotenv/config";
 import config from "./config";
 import { pool } from "./db";
+import { userRoute } from "./modules/user/user.route";
 
 const app: Application = express();
 const port = config.port;
@@ -13,6 +14,8 @@ const port = config.port;
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api/v1/users", userRoute);
 
 app.get("/", (req: Request, res: Response) => {
   // res.send("This is the root route of server with ExpressJs");
@@ -57,49 +60,7 @@ app.get("/api/v1/users/:id", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/api/v1/users", async (req: Request, res: Response) => {
-  try {
-    const result = await pool.query(`
-      SELECT * FROM users
-      `);
-    console.log(result);
-    res.status(200).json({
-      success: true,
-      message: "All users retrieved successfully.",
-      data: result.rows,
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-      error,
-    });
-  }
-});
 
-app.post("/api/v1/users", async (req: Request, res: Response) => {
-  try {
-    const { name, email, password, age } = req.body;
-    const result = await pool.query(
-      `
-      INSERT INTO users(name, email, password, age)
-        VALUES($1, $2, $3, $4) RETURNING *
-    `,
-      [name, email, password, age],
-    );
-    res.status(201).json({
-      success: true,
-      message: "User created successfully.",
-      data: result.rows[0],
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error?.message,
-      error,
-    });
-  }
-});
 
 app.put("/api/v1/users/:id", async (req: Request, res: Response) => {
   try {
