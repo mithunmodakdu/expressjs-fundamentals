@@ -1,6 +1,57 @@
 import { pool } from "../../db";
 import type { IUser } from "./user.interface";
 
+const getUserById = async(id: string) => {
+   const result = await pool.query(
+      `
+      SELECT * FROM users WHERE id = $1  
+    `,
+      [id],
+    );
+  
+    return result;
+}
+
+const deleteUser = async(id: string) => {
+   const result = await pool.query(
+      `
+      DELETE FROM  users
+      WHERE id = $1
+      `,
+      [id],
+    );
+  
+    return result;
+}
+
+const getAllUsers = async () => {
+  const result = await pool.query(`
+      SELECT * FROM users
+      `);
+  return result;
+};
+
+const updateUser = async(id: string, payload: Partial<IUser>) =>{
+  const { name, email, password, age, is_active } = payload;
+
+  const result = await pool.query(
+      `
+      UPDATE users
+      SET
+        name = COALESCE($1, name),
+        password = COALESCE($2, password),
+        age = COALESCE($3, age),
+        is_active = COALESCE($4, is_active),
+        updated_at = NOW()
+      WHERE  id = $5 RETURNING *
+
+    `,
+      [name ?? null, password ?? null, age ?? null, is_active ?? null, id],
+    );
+  
+    return result;
+}
+
 const createUser = async (payload: IUser) => {
   const { name, email, password, age } = payload;
   const result = await pool.query(
@@ -15,5 +66,9 @@ const createUser = async (payload: IUser) => {
 };
 
 export const userService = {
+  getUserById,
+  deleteUser,
+  getAllUsers,
+  updateUser,
   createUser,
 };
