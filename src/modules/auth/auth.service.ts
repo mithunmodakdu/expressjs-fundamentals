@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { pool } from "../../db";
 import type { IAuth } from "./auth.interface";
+import jwt from "jsonwebtoken";
 
 const login = async (payload: IAuth) => {
   const { email, password } = payload;
@@ -26,6 +27,15 @@ const login = async (payload: IAuth) => {
     throw new Error("Your account is inactive. Please contact with our support team.")
   }
 
+  const jwtPayload = {
+    id: user.rows[0].id,
+    name: user.rows[0].name,
+    email: user.rows[0].email,
+  }
+
+  const accessToken = jwt.sign(jwtPayload, "amarsecreteta", {expiresIn: "1d"});
+  
+  return {accessToken,  user: user.rows[0]};
   
 };
 
