@@ -39,6 +39,10 @@ const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
     });
   }
 
+  
+  req.user = decodedAccessToken;
+ 
+
   next();
 };
 

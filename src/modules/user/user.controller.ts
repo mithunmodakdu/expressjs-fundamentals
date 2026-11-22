@@ -87,6 +87,7 @@ const deleteUser = async (req: Request, res: Response) => {
 }
 
 const getAllUsers = async (req: Request, res: Response) => {
+  
   try {
     const result = await userService.getAllUsers();
 
