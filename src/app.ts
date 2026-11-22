@@ -10,6 +10,7 @@ import { userRoute } from "./modules/user/user.route";
 import { profileRoute } from "./modules/user/profile/profile.route";
 import { authController } from "./modules/auth/auth.controller";
 import fs from "fs";
+import logger from "./middlewares/logger";
 
 const app: Application = express();
 const port = config.port;
@@ -18,15 +19,7 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  const log = `\nMethod: ${req.method} | URL: ${req.url} | Time: ${Date.now()}\n`;
-  
-  fs.appendFile("logger.txt", log, (err) => {
-    console.log(err);
-  })
-
-  next();
-})
+app.use(logger);
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/profiles", profileRoute);
