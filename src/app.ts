@@ -5,15 +5,20 @@ import express, {
 } from "express";
 import "dotenv/config";
 import config from "./config";
-import { pool } from "./db";
 import { userRoute } from "./modules/user/user.route";
 import { authController } from "./modules/auth/auth.controller";
-import fs from "fs";
 import logger from "./middlewares/logger";
 import { profileRoute } from "./modules/profile/profile.route";
+import globalErrorHandler from "./middlewares/globalErrorHandler";
+import cors from "cors";
 
 const app: Application = express();
-const port = config.port;
+
+const corsOptions = {
+  origin: ["http//localhost:3000"],
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.text());
@@ -35,7 +40,7 @@ app.get("/", (req: Request, res: Response) => {
   // console.log(req)
 });
 
-
+app.use(globalErrorHandler)
 
 export default app;
 
