@@ -4,13 +4,13 @@ import express, {
   type Response,
 } from "express";
 import "dotenv/config";
-import config from "./config";
 import { userRoute } from "./modules/user/user.route";
-import { authController } from "./modules/auth/auth.controller";
 import logger from "./middlewares/logger";
 import { profileRoute } from "./modules/profile/profile.route";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+import { authRoute } from "./modules/auth/auth.route";
 
 const app: Application = express();
 
@@ -19,6 +19,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.text());
@@ -28,7 +29,7 @@ app.use(logger);
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/profiles", profileRoute);
-app.use("/api/v1/auths", authController.login)
+app.use("/api/v1/auths", authRoute)
 
 app.get("/", (req: Request, res: Response) => {
   // res.send("This is the root route of server with ExpressJs");

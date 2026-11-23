@@ -144,3 +144,39 @@ Method: POST | URL: /api/v1/auths/login | Time: 1795445344930
 Method: POST | URL: /api/v1/auths/login | Time: 1795447403933
 
 Method: POST | URL: /api/v1/auths/login | Time: 1795447492648
+
+Method: POST | URL: /api/v1/auths/login | Time: 1795449437882
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795449448351
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795449610530
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795450005716
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795450763598
+
+Method: POST | URL: /api/v1/auths/login | Time: 1795450773403
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795450824462
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795451661529
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452102747
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452187984
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452358488
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452458929
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452492249
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452926156
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795452963513
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455329500
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455444115
+
+Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455457001
