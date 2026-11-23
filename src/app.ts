@@ -7,10 +7,10 @@ import "dotenv/config";
 import config from "./config";
 import { pool } from "./db";
 import { userRoute } from "./modules/user/user.route";
-import { profileRoute } from "./modules/user/profile/profile.route";
 import { authController } from "./modules/auth/auth.controller";
 import fs from "fs";
 import logger from "./middlewares/logger";
+import { profileRoute } from "./modules/profile/profile.route";
 
 const app: Application = express();
 const port = config.port;

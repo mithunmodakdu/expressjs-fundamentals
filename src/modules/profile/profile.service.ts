@@ -1,4 +1,4 @@
-import { pool } from "../../../db";
+import { pool } from "../../db";
 import type { IProfile } from "./profile.interface";
 
 const createProfile = async (payload: IProfile) => {

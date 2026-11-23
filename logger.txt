@@ -94,3 +94,23 @@ Method: GET | URL: /api/v1/users | Time: 1795369717986
 Method: POST | URL: /api/v1/auths/login | Time: 1795369784111
 
 Method: GET | URL: /api/v1/users | Time: 1795369808280
+
+Method: POST | URL: /api/v1/auths/login | Time: 1795427395414
+
+Method: GET | URL: /api/v1/users | Time: 1795427417157
+
+Method: POST | URL: /api/v1/auths/login | Time: 1795427444026
+
+Method: GET | URL: /api/v1/users | Time: 1795427460511
+
+Method: GET | URL: /api/v1/users | Time: 1795427547762
+
+Method: GET | URL: /api/v1/users | Time: 1795427557732
+
+Method: GET | URL: /api/v1/users | Time: 1795427582911
+
+Method: GET | URL: /api/v1/users | Time: 1795427735586
+
+Method: GET | URL: /api/v1/users | Time: 1795427742747
+
+Method: GET | URL: /api/v1/users | Time: 1795427755810
