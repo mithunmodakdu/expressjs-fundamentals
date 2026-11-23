@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { pool } from "../../db";
 import type { IAuth } from "./auth.interface";
 import jwt from "jsonwebtoken";
+import config from "../../config";
 
 const login = async (payload: IAuth) => {
   const { email, password } = payload;
@@ -34,9 +35,10 @@ const login = async (payload: IAuth) => {
     role: user.rows[0].role
   }
 
-  const accessToken = jwt.sign(jwtPayload, "amarsecreteta", {expiresIn: "1d"});
+  const accessToken = jwt.sign(jwtPayload, config.jwt_access_secret, {expiresIn: "1h"});
+  const refreshToken = jwt.sign(jwtPayload, config.jwt_refresh_secret, {expiresIn: "10d"});
   
-  return {accessToken,  user: user.rows[0]};
+  return {accessToken, refreshToken,  user: user.rows[0]};
   
 };
 
