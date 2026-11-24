@@ -180,3 +180,5 @@ Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455329500
 Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455444115
 
 Method: POST | URL: /api/v1/auths/generate-token | Time: 1795455457001
+
+Method: POST | URL: /api/v1/auths/login | Time: 1795538469577
